@@ -62,3 +62,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "factory_bot_rails", "~> 4.11"
+
+gem "faker", "~> 1.9"
+
+gem "pg_search", "~> 2.1"
