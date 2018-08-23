@@ -1,4 +1,4 @@
 class Post < ApplicationRecord
-  include PgSearch
-  multisearchable :against => [:title, :name]
+  # include PgSearch
+  # multisearchable :against => [:title, :name]
 end
