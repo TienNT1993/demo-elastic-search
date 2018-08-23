@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-    resources :posts
-    root to: "posts#index"
 
+  namespace :admin do
+      resources :posts
+
+      root to: "posts#index"
+    end
 end
