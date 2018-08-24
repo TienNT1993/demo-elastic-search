@@ -4,8 +4,9 @@ module Admin
     # you can overwrite any of the RESTful actions. For example:
     #
     def index
-
-      resources = pg_search
+      # resources = pg_search
+      resources = elastic_search
+      resources = order.apply(resources)
       page = Administrate::Page::Collection.new(dashboard, order: order)
 
       render locals: {
@@ -21,19 +22,16 @@ module Admin
                                            dashboard_class,
                                            "").run
       resources = apply_resource_includes(resources)
-      resources = order.apply(resources)
-      # pg fulltext search
       resources = resources.pg_search(search_term) if search_term.present?
-
-      # elastic search
-      # resources = resources.search(search_term) if search_term.present?
-
       resources = resources.page(params[:page]).per(records_per_page)
       resources
     end
 
     def elastic_search
-    #   todo: some code in here
+      WillPaginate.per_page = records_per_page
+      return Post.search(search_term).page(params[:page]) if search_term.present?
+      Post.page(params[:page])
+
     end
 
 
@@ -41,12 +39,5 @@ module Admin
       params[:search].to_s.strip
     end
 
-    # Define a custom finder by overriding the `find_resource` method:
-    # def find_resource(param)
-    #   Post.find_by!(slug: param)
-    # end
-
-    # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
-    # for more information
   end
 end

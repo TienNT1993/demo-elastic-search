@@ -8,4 +8,11 @@ class Post < ApplicationRecord
   #   elastic search
   include Elasticsearch::Model
 
+  settings index: { number_of_shards: 1 } do
+    mappings dynamic: 'false' do
+      indexes :content, analyzer: 'english', index_options: 'offsets'
+      indexes :title, analyzer: 'english', index_options: 'offsets'
+    end
+  end
+
 end

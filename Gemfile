@@ -70,3 +70,5 @@ gem "pg_search", "~> 2.1"
 gem "administrate", "~> 0.10.0"
 
 gem "elasticsearch-model", "~> 5.1"
+
+gem "will_paginate", "~> 3.1"
