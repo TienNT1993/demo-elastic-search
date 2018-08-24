@@ -65,8 +65,6 @@ gem "factory_bot_rails", "~> 4.11"
 
 gem "faker", "~> 1.9"
 
-# gem "pg_search", "~> 2.1"
-
-# gem "will_paginate", "~> 3.1"
+gem "pg_search", "~> 2.1"
 
 gem "administrate", "~> 0.10.0"
