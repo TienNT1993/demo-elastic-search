@@ -2,6 +2,7 @@
 require 'elasticsearch/model'
 
 class Post < ApplicationRecord
+  self.per_page = 20
   include PgSearch
   pg_search_scope :pg_search, :against => [:title, :content]
 
@@ -10,8 +11,8 @@ class Post < ApplicationRecord
 
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
-      indexes :content, analyzer: 'english', index_options: 'offsets'
       indexes :title, analyzer: 'english', index_options: 'offsets'
+      indexes :content, analyzer: 'english', index_options: 'offsets'
     end
   end
 
