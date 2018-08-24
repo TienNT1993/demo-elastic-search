@@ -57,3 +57,6 @@ end
 </code></pre>
 
 
+more reference: 
+
+<a href="https://iridakos.com/tutorials/2017/12/03/elasticsearch-and-rails-tutorial.html"> click here</a>
