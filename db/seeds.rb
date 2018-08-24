@@ -9,4 +9,4 @@
 
 # create sample database to test
 require 'factory_bot'
-FactoryBot.create_list(:post, 100000)
+FactoryBot.create_list(:post, 1000000)
