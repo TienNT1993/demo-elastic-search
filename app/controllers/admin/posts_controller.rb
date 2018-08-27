@@ -2,7 +2,7 @@ module Admin
   class PostsController < Admin::ApplicationController
 
     def index
-      resources = elastic_search
+      resources = pg_search
       resources = order.apply(resources)
       page = Administrate::Page::Collection.new(dashboard, order: order)
 
@@ -21,7 +21,7 @@ module Admin
       resources = apply_resource_includes(resources)
       resources = order.apply(resources)
       resources = resources.pg_search(search_term) if search_term.present?
-      resources = resources.page(params[:page]).per(records_per_page)
+      resources = resources.paginate(:page => params[:page], :per_page => records_per_page)
       resources
     end
 
